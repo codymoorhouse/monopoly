@@ -1,25 +1,13 @@
 package monopoly;
 
-import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import monopoly.enums.PlayerColor;
 
 public class BoardController {
     public static final int MAX_PLAYER = 8;
     
     private GameBoard gameBoard;
-    /* Colors of the players on the gameBoard */
-    private final List<Color> playerColors = new ArrayList<>(Arrays.asList(
-            new Color(255, 249, 102), /* Player 1 */
-            new Color(66, 134, 244),  /* Player 2 */
-            new Color(143, 99, 158),  /* Player 3 */
-            new Color(209, 155, 20),  /* Player 4 */
-            new Color(209, 96, 20),   /* Player 5 */
-            new Color(120, 230, 30),  /* Player 6 */
-            new Color(206, 57, 72),   /* Player 7 */
-            new Color(72, 196, 188)   /* Player 8 */
-    ));
     private int outOfGamePlayers = 0;
     private int playerTurnIndex = 0;
     private final List<Player> players = new ArrayList<>();
@@ -97,7 +85,7 @@ public class BoardController {
         players.clear();
         for (int i = 0; i < number; i++) {
             Player player = new Player(gameBoard.getCell(0));
-            player.setPlayerColor(playerColors.get(i));
+            player.setPlayerColor(PlayerColor.values()[i].getColor());
             players.add(player);
         }
     }
